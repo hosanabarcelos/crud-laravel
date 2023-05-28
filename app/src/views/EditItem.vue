@@ -1,5 +1,6 @@
 <template>
 	<div>
+        <router-link to="/list">Voltar para a lista</router-link>
         <h3>Editar ou excluir frase de número {{ this.$route.params.id }}</h3>
         <div class="row">
             <div class="col-6">
