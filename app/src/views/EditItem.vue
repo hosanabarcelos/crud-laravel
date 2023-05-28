@@ -68,6 +68,13 @@ export default {
 				})
 
 		},
+
+		handleDeletePhrase() {
+			this.$http.delete(`/delete/${this.$route.params.id}`)
+				.then((response) => {
+					console.log(response);
+				})
+		}
 	},
 
 	created() {
