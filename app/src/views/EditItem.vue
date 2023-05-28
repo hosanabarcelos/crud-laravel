@@ -1,6 +1,19 @@
 <template>
 	<div class="mx-auto">
 		<router-link class="mb-4" to="/list">Voltar para a lista</router-link>
+		<div
+			v-if="editSuccess"
+			class="alert alert-success"
+		>
+			Frase editada!
+		</div>
+		<div
+			v-if="deleteSuccess"
+			class="alert alert-danger"
+		>
+			Frase excluída!
+		</div>
+
 		<p>Editar ou excluir frase de número <strong>{{ this.$route.params.id }}</strong></p>
 		<div class="row">
 			<div class="col-6">
@@ -45,6 +58,8 @@ export default {
 			listing: [],
 			category: '',
 			phrase: '',
+			editSuccess: false,
+			deleteSuccess: false,
 		}
 	},
 	methods: {
@@ -66,6 +81,10 @@ export default {
 				.then((response) => {
 					console.log(response);
 				})
+				this.editSuccess = true;
+				setTimeout(() => {
+					this.$router.push('/list')
+				}, 2000)
 
 		},
 
@@ -74,6 +93,10 @@ export default {
 				.then((response) => {
 					console.log(response);
 				})
+				this.deleteSuccess = true;
+				setTimeout(() => {
+					this.$router.push('/list')
+				}, 2000)
 		}
 	},
 
