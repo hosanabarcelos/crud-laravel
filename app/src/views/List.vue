@@ -1,6 +1,7 @@
 <template>
 	<div class="container">
 		<b-modal
+            ref="modal-add"
 			id="modal-add"
 			title="Nova frase"
             hide-footer
@@ -99,6 +100,7 @@ export default {
                 })
 
 			this.listing.push(payload);
+            this.$refs['modal-add'].hide()
 			this.resetForm();
 		},
 
