@@ -19,4 +19,4 @@ Route::get('/list', [listController::class, 'listing']);
 Route::post('/create', [listController::class, 'create']);
 Route::get('/edit/{phrase}', [listController::class, 'edit']);
 Route::put('/update/{phrase}', [listController::class, 'update']);
-Route::delete('/delete', [listController::class, 'delete']);
+Route::delete('/delete/{phrase}', [listController::class, 'delete']);
