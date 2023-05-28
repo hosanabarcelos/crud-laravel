@@ -1,9 +1,9 @@
 <template>
-	<div>
-        <router-link to="/list">Voltar para a lista</router-link>
-        <h3>Editar ou excluir frase de número {{ this.$route.params.id }}</h3>
-        <div class="row">
-            <div class="col-6">
+	<div class="mx-auto">
+		<router-link class="mb-4" to="/list">Voltar para a lista</router-link>
+		<p>Editar ou excluir frase de número <strong>{{ this.$route.params.id }}</strong></p>
+		<div class="row">
+			<div class="col-6">
 					<b-form-input
 						v-model="category"
 						placeholder="Categoria"
@@ -14,18 +14,19 @@
 						v-model="phrase"
 						placeholder="Frase"
 					/>
-			    </div>
-            <div class="row mt-4">
-				<div class="col-12">
+				</div>
+			<div class="row mt-4">
+				<div class="col-12 mt-4">
 					<b-button
-						variant="success"
+						variant="outline-success"
 						block
 						@click="handleUpdatePhrase"
 					>
 						Editar
 					</b-button>
-                    <b-button
-						variant="danger"
+					<div class="space" />
+					<b-button
+						variant="outline-danger"
 						block
 						@click="handleDeletePhrase"
 					>
@@ -33,7 +34,7 @@
 					</b-button>
 				</div>
 			</div>
-        </div>
+		</div>
 	</div>
 </template>
 <script>
@@ -47,25 +48,26 @@ export default {
 		}
 	},
 	methods: {
-        getPhrase() {
-            this.$http.get(`/edit/${this.$route.params.id}`)
-                .then((response) => {
-                    this.category = response.data.category;
-                    this.phrase = response.data.phrase;
-                });
-        },
+		getPhrase() {
+			this.$http.get(`/edit/${this.$route.params.id}`)
+				.then((response) => {
+					this.category = response.data.category;
+					this.phrase = response.data.phrase;
+				});
+		},
 
-        handleUpdatePhrase() {
+		handleUpdatePhrase() {
 			const payload = {
 				category: this.category,
 				phrase: this.phrase,
 			}
 
-            this.$http.put(`/update/${this.$route.params.id}`, payload)
-                .then((response) => {
-                    console.log(response);
-                })
-        },
+			this.$http.put(`/update/${this.$route.params.id}`, payload)
+				.then((response) => {
+					console.log(response);
+				})
+
+		},
 	},
 
 	created() {
@@ -73,3 +75,23 @@ export default {
 	}
 }
 </script>
+<style scoped>
+.mx-auto {
+	margin-right: auto !important;
+	margin-left: auto !important;
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100vh;
+}
+.mt-4 {
+	margin-top: 1.5rem !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.space {
+	width: 20px;
+}
+</style>
