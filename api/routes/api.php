@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\listController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/list', [listController::class, 'listing']);
+Route::post('/create', [listController::class, 'create']);
+Route::get('/edit/{phrase}', [listController::class, 'edit']);
+Route::put('/update/{phrase}', [listController::class, 'update']);
+Route::delete('/delete', [listController::class, 'delete']);
