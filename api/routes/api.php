@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\listController;
+use App\Http\Controllers\ListController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/list', [listController::class, 'listing']);
-Route::post('/create', [listController::class, 'create']);
-Route::get('/edit/{phrase}', [listController::class, 'edit']);
-Route::put('/update/{phrase}', [listController::class, 'update']);
-Route::delete('/delete/{phrase}', [listController::class, 'delete']);
+Route::get('/list', [ListController::class, 'listing']);
+Route::post('/create', [ListController::class, 'create']);
+Route::get('/edit/{phrase}', [ListController::class, 'edit']);
+Route::put('/update/{phrase}', [ListController::class, 'update']);
+Route::delete('/delete/{phrase}', [ListController::class, 'delete']);
