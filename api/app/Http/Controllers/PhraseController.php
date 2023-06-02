@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ListItem;
+use App\Models\Phrase;
 use Illuminate\Http\Request;
 
-class ListController extends Controller
+class PhraseController extends Controller
 {
 	//GET
 	public function listing(Request $request)
 	{
-		$ListItem = ListItem::all();
+		$Phrase = Phrase::all();
 
-		return response()->json($ListItem);
+		return response()->json($Phrase);
 	}
 
 	//POST
 	public function create(Request $request)
 	{
-		$newPhrase = new ListItem();
+		$newPhrase = new Phrase();
 		$newPhrase->category = $request->category;
 		$newPhrase->phrase = $request->phrase;
 		$newPhrase-> save();
@@ -27,13 +27,13 @@ class ListController extends Controller
 	}
 
 	//GET phrase
-	public function edit(ListItem $phrase, Request $request)
+	public function edit(Phrase $phrase, Request $request)
 	{
 		return response()->json($phrase);
 	}
 
 	//PUT
-	public function update(ListItem $phrase, Request $request)
+	public function update(Phrase $phrase, Request $request)
 	{
 		$phrase->category = $request->category;
 		$phrase->phrase = $request->phrase;
@@ -42,7 +42,8 @@ class ListController extends Controller
 		return response()->json('success');
 	}
 
-	public function delete(ListItem $phrase, Request $request)
+	//DELETE
+	public function delete(Phrase $phrase, Request $request)
 	{
 		$phrase->delete();
 
