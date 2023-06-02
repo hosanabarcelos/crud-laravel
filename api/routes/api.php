@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ListController;
+use App\Http\Controllers\PhraseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/list', [ListController::class, 'listing']);
-Route::post('/create', [ListController::class, 'create']);
-Route::get('/edit/{phrase}', [ListController::class, 'edit']);
-Route::put('/update/{phrase}', [ListController::class, 'update']);
-Route::delete('/delete/{phrase}', [ListController::class, 'delete']);
+Route::get('/list', [PhraseController::class, 'listing']);
+Route::post('/create', [PhraseController::class, 'create']);
+Route::get('/edit/{phrase}', [PhraseController::class, 'edit']);
+Route::put('/update/{phrase}', [PhraseController::class, 'update']);
+Route::delete('/delete/{phrase}', [PhraseController::class, 'delete']);
